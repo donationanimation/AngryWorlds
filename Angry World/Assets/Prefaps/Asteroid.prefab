@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58165878246760976}
   - component: {fileID: 231851848933612930}
   - component: {fileID: 114854623007992266}
+  - component: {fileID: 114574029064139048}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -51,7 +52,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017700025319962}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -79,6 +80,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &114574029064139048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017700025319962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ffc5dc7f9dc6545a4bca04c23001e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114854623007992266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,8 +105,6 @@ MonoBehaviour:
   maxStretch: 3
   catapultLineFront: {fileID: 0}
   catapultLineBack: {fileID: 0}
-  projectile: {fileID: 0}
-  collider2D: {fileID: 0}
 --- !u!212 &212814876451657638
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,8 +165,8 @@ SpringJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0.74772143}
+  m_ConnectedAnchor: {x: 0.028983116, y: 0.74540186}
   m_AutoConfigureDistance: 0
   m_Distance: 1
   m_DampingRatio: 0
-  m_Frequency: 1
+  m_Frequency: 1.5

@@ -26,9 +26,14 @@ public class ButtonScript : MonoBehaviour {
     public void playGame()
     {
         menuPanel.SetActive(false);
+    }
+
+    public void nextLevel()
+    {
         MessagePanelPlastic.SetActive(false);
         MessagePanelAtomCanister.SetActive(false);
         MessagePanelTrump.SetActive(false);
+        EventManager.TriggerEvent("NextLevel");
     }
 
     public void QuitGame()

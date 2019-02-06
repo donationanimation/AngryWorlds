@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileDragging : MonoBehaviour {
+public class ProjectileDragging : MonoBehaviour
+{
 
     public float maxStretch = 3.0f;
     public LineRenderer catapultLineFront;
     public LineRenderer catapultLineBack;
-    public Rigidbody2D projectile;
-    public CircleCollider2D collider2D;
 
+
+    private Rigidbody2D projectile;
     private Transform catapult;
     private SpringJoint2D spring;
     private bool clickedOn = false;
@@ -25,26 +26,32 @@ public class ProjectileDragging : MonoBehaviour {
         catapult = spring.connectedBody.transform;
     }
 
-    void Start () {
+    void Start()
+    {
+        projectile = GetComponent<Rigidbody2D>();
         LineRendererSetup();
         rayToMouse = new Ray(catapult.position, Vector3.zero);
         leftCatapultToProjectile = new Ray(catapultLineFront.transform.position, Vector3.zero);
         maxStretchSqr = maxStretch * maxStretch;
-        circleRadius = collider2D.radius;
+        circleRadius = GetComponent<CircleCollider2D>().radius;
+
+        projectile.isKinematic = true;
     }
-	
-	void Update () {
+
+    void Update()
+    {
         if (clickedOn)
         {
             Dragging();
         }
 
-        if(spring != null)
+        if (spring != null)
         {
-            if(projectile.isKinematic && prevVelocity.sqrMagnitude > projectile.velocity.sqrMagnitude)
+            if (!projectile.isKinematic && prevVelocity.sqrMagnitude > projectile.velocity.sqrMagnitude)
             {
                 Destroy(spring);
                 projectile.velocity = prevVelocity;
+                EventManager.TriggerEvent("ProjecttileThrowed");
             }
 
             if (!clickedOn)
@@ -63,6 +70,9 @@ public class ProjectileDragging : MonoBehaviour {
 
     void LineRendererSetup()
     {
+        catapultLineFront.enabled = true;
+        catapultLineBack.enabled = true;
+
         catapultLineFront.SetPosition(0, catapultLineFront.transform.position);
         catapultLineBack.SetPosition(0, catapultLineBack.transform.position);
 
@@ -75,13 +85,13 @@ public class ProjectileDragging : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        spring.enabled = false;
+        //spring.enabled = false;
         clickedOn = true;
     }
 
     private void OnMouseUp()
     {
-        spring.enabled = true;
+        //spring.enabled = true;
         projectile.isKinematic = false;
         clickedOn = false;
     }
@@ -90,7 +100,6 @@ public class ProjectileDragging : MonoBehaviour {
     {
         Vector3 mouseWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 catapultToMouse = mouseWorldPoint - catapult.position;
-        Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
         if (catapultToMouse.sqrMagnitude > maxStretchSqr)
         {
             rayToMouse.direction = catapultToMouse;
