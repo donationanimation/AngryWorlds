@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\KimsTest.cs" />
     <Compile Include="Assets\Scripts\ProjectileDragging.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
+    <Compile Include="Assets\Scripts\Woodblank.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Kim/Documents/GitHub/MobileGames/AngryWorlds/Angry World/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

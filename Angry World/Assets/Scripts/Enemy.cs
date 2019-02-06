@@ -5,17 +5,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     public string infoText;
+    public float destroyVelocity;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (Mathf.Abs(collision.relativeVelocity.x) >= destroyVelocity || Mathf.Abs(collision.relativeVelocity.y) >= destroyVelocity)
         {
             Hitted();
         }
     }
     private void Hitted()
     {
-        print("hitted");
         EventManager.TriggerEvent("EnemyHitted");
         Destroy(this.gameObject);
     }
