@@ -61,7 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\KimsTest.cs" />
     <Compile Include="Assets\Scripts\ProjectileDragging.cs" />
+    <Compile Include="Assets\Scripts\Sound.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Kim/Documents/GitHub/MobileGames/AngryWorlds/Angry World/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/PetersScene.unity
+- path: Assets/Scenes/KimsScene.unity
   isLoaded: 1
   isActive: 1
