@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    public string infoText;
     public float destroyVelocity;
 
     private void OnCollisionEnter2D(Collision2D collision)

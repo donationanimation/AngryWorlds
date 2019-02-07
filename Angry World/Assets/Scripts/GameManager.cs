@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -97,7 +96,7 @@ public class GameManager : MonoBehaviour
     {
         if (projecttilesCount > 0)
         {
-            countDown = 10.0f;
+            countDown = 7.0f;
             isThrowed = false;
 
             ballPrefap.transform.position = startPosition;
@@ -142,17 +141,28 @@ public class GameManager : MonoBehaviour
     private void NextLevel()
     {
         level++;
-        SceneManager.LoadScene(level - 1);
-        countDown = 10.0f;
-        isThrowed = false;
-        projecttilesCount = 3;
-        SpawnBall();
+        if(level > 3)
+        {
+            GameOver();
+        }
+        else
+        {
+            SceneManager.LoadScene(level - 1);
+            countDown = 7.0f;
+            isThrowed = false;
+            projecttilesCount = 3;
+            SpawnBall();
+        }
+
     }
 
     private void GameOver()
     {
         gameOver = true;
         print("GameOver");
+        level = 1;
+        SceneManager.LoadScene(level - 1);
+        EventManager.TriggerEvent("GameOver");
     }
 
 }
